@@ -1,0 +1,47 @@
+// Breakpoints
+$breakpoints: (
+  xs: 320px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+// Modern breakpoint mixin
+@mixin breakpoint($size, $type: 'min') {
+  $value: map-get($breakpoints, $size);
+
+  @if $type == 'max' {
+    @media (max-width: ($value - 1px)) {
+      @content;
+    }
+  } @else if $type == 'min' {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+}
+
+// Container query mixin
+@mixin container($size) {
+  @container (min-width: $size) {
+    @content;
+  }
+}
+
+// Text truncation
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
