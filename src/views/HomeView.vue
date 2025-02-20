@@ -207,7 +207,7 @@ watchEffect(() => {
 
 .loading-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
 }
 
@@ -215,12 +215,11 @@ watchEffect(() => {
   width: max-content;
   display: flex;
   gap: 2rem;
-
-  margin: auto;
+  margin: 2rem auto;
 
   &__prev,
   &__next {
-    padding: 1rem 3rem;
+    padding: 1.5rem 5rem;
 
     display: block;
     border-radius: 1rem;
@@ -229,6 +228,7 @@ watchEffect(() => {
     border: none;
     cursor: pointer;
     transition: background-color 300ms;
+    font-size: 1.75rem;
 
     &:focus {
       outline: none;
